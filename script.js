@@ -35,15 +35,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bg-music");
     const soundBtn = document.getElementById("sound-btn");
     let isPlaying = false;
-    soundBtn.addEventListener("click", () => {
+
+    function playAudio() {
+        bgMusic.play().then(() => {
+            isPlaying = true;
+            soundBtn.innerHTML = '🔇 Turn Off Sound';
+        }).catch(err => {
+            console.log("Autoplay blocked. Waiting for user interaction...");
+            isPlaying = false;
+            soundBtn.innerHTML = '🔊 Turn On Sound';
+        });
+    }
+
+    // Try autoplay immediately
+    playAudio();
+
+    // Fallback: Try to play on first user interaction if not already playing
+    const startAudioOnInteraction = () => {
+        if (!isPlaying) {
+            playAudio();
+            document.removeEventListener('click', startAudioOnInteraction);
+            document.removeEventListener('touchstart', startAudioOnInteraction);
+        }
+    };
+    document.addEventListener('click', startAudioOnInteraction);
+    document.addEventListener('touchstart', startAudioOnInteraction);
+
+    soundBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent triggering the page-wide click listener
         if (isPlaying) {
             bgMusic.pause();
             soundBtn.innerHTML = '🔊 Turn On Sound';
+            isPlaying = false;
+            // Also clean up interaction listeners if they haven't fired yet
+            document.removeEventListener('click', startAudioOnInteraction);
+            document.removeEventListener('touchstart', startAudioOnInteraction);
         } else {
-            bgMusic.play();
-            soundBtn.innerHTML = '🔇 Turn Off Sound';
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                soundBtn.innerHTML = '🔇 Turn Off Sound';
+            });
         }
-        isPlaying = !isPlaying;
     });
 
     // --- Dynamic Progress Bar (Section 3) ---
