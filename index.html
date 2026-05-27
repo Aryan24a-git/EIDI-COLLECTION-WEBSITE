@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Eid Mubarak - Eid ul Adha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="bg-music" loop>
+    <source src="GIVEN_ASSESTS/BACK%20GROUND%20MUSIC.mp3" type="audio/mpeg">
+</audio>
+
+<canvas id="starCanvas"></canvas>
+
+<!-- Slider Navigation -->
+<button class="nav-btn prev-btn" id="prev-btn">❮</button>
+<button class="nav-btn next-btn" id="next-btn">❯</button>
+
+<!-- Toast for reactions -->
+<div id="toast"></div>
+
+<div class="slider-container" id="slider-container">
+
+    <!-- ========================= SECTION 1 ========================= -->
+    <section class="slide active" id="slide-1">
+        <!-- String lights SVG -->
+        <svg class="string-lights" viewBox="0 0 1200 80" preserveAspectRatio="none">
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+            <path d="M0,15 Q200,35 400,18 Q600,5 800,20 Q1000,35 1200,15" stroke="#6a4c00" stroke-width="1.5" fill="none"/>
+            <g filter="url(#glow)">
+                <ellipse cx="60" cy="22" rx="5" ry="7" fill="#FFE066" class="bulb"/>
+                <ellipse cx="130" cy="28" rx="5" ry="7" fill="#FF6B6B" class="bulb"/>
+                <ellipse cx="200" cy="24" rx="5" ry="7" fill="#FFE066" class="bulb"/>
+                <ellipse cx="270" cy="18" rx="5" ry="7" fill="#66FF99" class="bulb"/>
+                <ellipse cx="340" cy="22" rx="5" ry="7" fill="#FFE066" class="bulb"/>
+                <ellipse cx="410" cy="16" rx="5" ry="7" fill="#FF6B6B" class="bulb"/>
+                <ellipse cx="480" cy="20" rx="5" ry="7" fill="#FFE066" class="bulb"/>
+                <ellipse cx="550" cy="14" rx="5" ry="7" fill="#66CCFF" class="bulb"/>
+                <ellipse cx="620" cy="18" rx="5" ry="7" fill="#FFE066" class="bulb"/>
+                <ellipse cx="690" cy="22" rx="5" ry="7" fill="#FF6B6B" class="bulb"/>
+                <ellipse cx="760" cy="26" rx="5" ry="7" fill="#FFE066" class="bulb"/>
+                <ellipse cx="830" cy="20" rx="5" ry="7" fill="#66FF99" class="bulb"/>
+                <ellipse cx="900" cy="16" rx="5" ry="7" fill="#FFE066" class="bulb"/>
+                <ellipse cx="970" cy="22" rx="5" ry="7" fill="#FF6B6B" class="bulb"/>
+                <ellipse cx="1040" cy="18" rx="5" ry="7" fill="#FFE066" class="bulb"/>
+                <ellipse cx="1110" cy="14" rx="5" ry="7" fill="#66CCFF" class="bulb"/>
+            </g>
+        </svg>
+
+        <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+        <button class="sound-btn" id="sound-btn">🔊 Turn On Sound</button>
+
+        <div class="speech-bubble">عید مبارک<br>یا چلو ❤️</div>
+
+        <!-- Replaced SVG Sheep with PNG + Animation Class -->
+        <img src="GIVEN_ASSESTS/SECTION%201%20SHEEP.png" class="sheep-s1 waving-sheep" alt="Happy Sheep">
+
+        <!-- BOTH Old and New Moons -->
+        <img src="GIVEN_ASSESTS/MOON%201.png" class="old-moon-1 glowing-moon" alt="Moon 1">
+        <img src="GIVEN_ASSESTS/MOON%202.png" class="old-moon-2 glowing-moon" alt="Moon 2">
+        
+        <svg class="new-moon glowing-moon" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="moonGrad" cx="35%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#FFE85C"/>
+                    <stop offset="60%" stop-color="#FFD700"/>
+                    <stop offset="100%" stop-color="#B8860B"/>
+                </radialGradient>
+                <filter id="moonGlow">
+                    <feGaussianBlur stdDeviation="8" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+            <g filter="url(#moonGlow)">
+                <path d="M80,10 Q150,50 145,100 Q140,150 80,170 Q120,130 118,90 Q116,50 80,10Z" fill="url(#moonGrad)"/>
+                <path d="M95,40 Q120,60 118,85 Q116,110 95,125 Q110,105 108,82 Q107,60 95,40Z" fill="rgba(255,180,0,0.3)"/>
+            </g>
+            <g transform="translate(50,70)">
+                <polygon points="0,-14 3.4,-5 12.9,-5 5.6,1.8 8.5,11.5 0,6 -8.5,11.5 -5.6,1.8 -12.9,-5 -3.4,-5" fill="#FFD700" opacity="0.9"/>
+            </g>
+        </svg>
+
+        <!-- BOTH Old and New Lanterns -->
+        <img src="GIVEN_ASSESTS/LENTERN%201.png" class="old-lantern-1 glowing-lantern" alt="Lantern 1">
+        <img src="GIVEN_ASSESTS/LENTERN%202.png" class="old-lantern-2 glowing-lantern" alt="Lantern 2">
+        <img src="GIVEN_ASSESTS/LENTERN%201.png" class="old-lantern-3 glowing-lantern" alt="Lantern 3">
+        <img src="GIVEN_ASSESTS/LENTERN%202.png" class="old-lantern-4 glowing-lantern" alt="Lantern 4">
+        
+        <svg class="new-lantern glowing-lantern" viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="lg1" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#FFE066" stop-opacity="0.9"/>
+                    <stop offset="100%" stop-color="#FF9900" stop-opacity="0.3"/>
+                </radialGradient>
+                <filter id="lglow"><feGaussianBlur stdDeviation="4"/></filter>
+            </defs>
+            <rect x="30" y="0" width="20" height="15" rx="3" fill="#B8860B"/>
+            <rect x="33" y="12" width="14" height="5" rx="2" fill="#FFD700"/>
+            <path d="M20,20 L60,20 L65,90 L15,90 Z" fill="#8B6914"/>
+            <path d="M22,22 L58,22 L62,88 L18,88 Z" fill="#C8941A"/>
+            <ellipse cx="40" cy="55" rx="20" ry="28" fill="url(#lg1)"/>
+            <ellipse cx="40" cy="55" rx="15" ry="22" fill="#FFE066" opacity="0.4" filter="url(#lglow)"/>
+            <line x1="40" y1="20" x2="40" y2="90" stroke="rgba(255,215,0,0.3)" stroke-width="1"/>
+            <line x1="20" y1="55" x2="60" y2="55" stroke="rgba(255,215,0,0.3)" stroke-width="1"/>
+            <path d="M15,90 Q40,100 65,90 L65,95 Q40,105 15,95 Z" fill="#8B6914"/>
+            <line x1="20" y1="95" x2="18" y2="110" stroke="#FFD700" stroke-width="1.5"/>
+            <line x1="30" y1="98" x2="29" y2="115" stroke="#FFD700" stroke-width="1.5"/>
+            <line x1="40" y1="99" x2="40" y2="116" stroke="#FFD700" stroke-width="1.5"/>
+            <line x1="50" y1="98" x2="51" y2="115" stroke="#FFD700" stroke-width="1.5"/>
+            <line x1="60" y1="95" x2="62" y2="110" stroke="#FFD700" stroke-width="1.5"/>
+        </svg>
+
+        <div class="s1-content">
+            <div class="eid-title">Eid Mubarak</div>
+            <div class="eid-subtitle">✦ Eid ul Adha ✦</div>
+            <div class="hearts-row">♥ ♥ ♥</div>
+            <p class="blessing-text">
+                May Allah bless you, your family,<br>
+                grant you endless happiness,<br>
+                and accept all your duas. ❤️
+            </p>
+            <div class="arabic-dua">❤️ تَقَبَّلَ اللهُ مِنَّا وَمِنْكُمْ</div>
+            <div class="reaction-label">✦ Drop a reaction to spread the Eid vibes! ✦</div>
+            <div class="reaction-row">
+                <div class="react-btn" data-type="cute"><span class="emoji">🥺</span><span class="label">So Cute</span></div>
+                <div class="react-btn" data-type="qr"><span class="emoji">💸</span><span class="label">Where QR?</span></div>
+                <div class="react-btn" data-type="goat"><span class="emoji">🐐</span><span class="label">Goat<br>Approved</span></div>
+                <div class="react-btn" data-type="masha"><span class="emoji">😍</span><span class="label">Mashallah</span></div>
+                <div class="react-btn" data-type="broke"><span class="emoji">😂</span><span class="label">Bro wants<br>money</span></div>
+            </div>
+            <p style="font-size:12px;color:#aaa;margin-top:12px;">🐑 Click any reaction!</p>
+        </div>
+        <div id="confetti-container"></div>
+    </section>
+
+    <!-- ========================= SECTION 2 ========================= -->
+    <section class="slide" id="slide-2">
+        <div class="s2-bg-pattern"></div>
+        <canvas class="money-canvas" id="moneyCanvas"></canvas>
+
+        <div class="sci-note fluttering-note">
+            <div class="note-title">💡 Scientific Fact</div>
+            <div class="note-body">Scientists say sending Eidi increases happiness by 99.9% 😎</div>
+        </div>
+
+        <div class="sheep-s2-wrapper center-y">
+            <div id="tears-container"></div>
+            <!-- Replaced SVG Sheep with PNG + Animation Class -->
+            <img src="GIVEN_ASSESTS/SECTION%202%20SHEEP.png" class="sheep-s2 crying-sheep-anim" alt="Crying Sheep">
+        </div>
+        
+        <div class="speech-bubble bubble-s2">
+            Aap bhi na yarr... 🥺
+        </div>
+
+        <div class="s2-content">
+            <div class="s2-habibi">Okayy Habibi...</div>
+            <div class="s2-title">Now For The <span>Important Part</span> 🥰</div>
+            <div class="survived-row">
+                You survived Ramadan. <span class="check">✅</span>&nbsp;
+                You survived Eid. <span class="check">✅</span>&nbsp;
+                You survived Qurbani. <span class="check">✅</span>
+            </div>
+            <p style="font-size:14px;color:#ccc;margin-bottom:12px;">Now complete the final mission:</p>
+            <div class="send-eidi-btn">💸 SEND EIDI 💸</div>
+            
+            <div class="s2-options">
+                <div class="option-card oc-green" data-type="eidi">
+                    <span class="oc-emoji">💸</span>
+                    <span class="oc-title">Send Eidi</span>
+                    <span class="oc-sub">Best Option</span>
+                </div>
+                <div class="option-card oc-red" data-type="broke">
+                    <span class="oc-emoji">😭</span>
+                    <span class="oc-title">I'm Broke</span>
+                    <span class="oc-sub">(Still Click)</span>
+                </div>
+                <div class="option-card oc-gold" data-type="negotiate">
+                    <span class="oc-emoji">🤝</span>
+                    <span class="oc-title">Negotiate</span>
+                    <span class="oc-sub">Discount?</span>
+                </div>
+                <div class="option-card oc-purple" data-type="dua">
+                    <span class="oc-emoji">🙏</span>
+                    <span class="oc-title">Dua Instead?</span>
+                    <span class="oc-sub">(Accepted)</span>
+                </div>
+            </div>
+            <p style="font-size:12px;color:#888;">— Choose wisely 😅 —</p>
+
+            <div class="s2-hints">
+                <div class="hint-item">
+                    <span class="hint-emoji">🐑</span>
+                    <div><strong style="color:#FFD700">I'm Broke Clicked?</strong><br>Even ₹10 rupees builds character. 🥲</div>
+                </div>
+                <div class="hint-item">
+                    <span class="hint-emoji">😎</span>
+                    <div><strong style="color:#FFD700">Dua Instead Clicked?</strong><br>Dua accepted... but QR is still available 👀</div>
+                </div>
+                <div class="hint-item">
+                    <span class="hint-emoji">⏰</span>
+                    <div><strong style="color:#FFD700">Taking too long?</strong><br>Habibi don't scroll away... 😅</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= SECTION 3 ========================= -->
+    <section class="slide" id="slide-3">
+        <canvas id="moneyCanvas3"></canvas>
+        <div id="sparkle-container"></div>
+
+        <!-- Both Old and New Lanterns -->
+        <img src="GIVEN_ASSESTS/LENTERN%201.png" class="old-lantern-1-s3 glowing-lantern" alt="Lantern 1">
+        <svg class="new-lantern-s3 glowing-lantern" viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="0" width="20" height="15" rx="3" fill="#B8860B"/>
+            <rect x="33" y="12" width="14" height="5" rx="2" fill="#FFD700"/>
+            <path d="M20,20 L60,20 L65,90 L15,90 Z" fill="#8B6914"/>
+            <path d="M22,22 L58,22 L62,88 L18,88 Z" fill="#C8941A"/>
+            <defs><radialGradient id="lg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFE066" stop-opacity="0.9"/><stop offset="100%" stop-color="#FF9900" stop-opacity="0.3"/></radialGradient></defs>
+            <ellipse cx="40" cy="55" rx="20" ry="28" fill="url(#lg2)"/>
+            <line x1="40" y1="20" x2="40" y2="90" stroke="rgba(255,215,0,0.3)" stroke-width="1"/>
+            <path d="M15,90 Q40,100 65,90 L65,95 Q40,105 15,95 Z" fill="#8B6914"/>
+            <line x1="20" y1="95" x2="18" y2="110" stroke="#FFD700" stroke-width="1.5"/>
+            <line x1="30" y1="98" x2="29" y2="115" stroke="#FFD700" stroke-width="1.5"/>
+            <line x1="40" y1="99" x2="40" y2="116" stroke="#FFD700" stroke-width="1.5"/>
+            <line x1="50" y1="98" x2="51" y2="115" stroke="#FFD700" stroke-width="1.5"/>
+            <line x1="60" y1="95" x2="62" y2="110" stroke="#FFD700" stroke-width="1.5"/>
+        </svg>
+
+        <!-- Replaced SVG Sheep with PNG + Animation Class -->
+        <img src="GIVEN_ASSESTS/SECTION%203%20SHEEP.png" class="sheep-s3 enjoying-sheep" alt="Cool Sheep">
+        <div class="bubble-s3">Eidi de do yaar 💙</div>
+        <div class="thank-you">Thank you<br>in advance 🥲</div>
+
+        <div class="s3-content">
+            <div class="s3-title">✨ Official Eidi Collection Center ✨</div>
+            <div class="s3-subtitle">Support Local Broke Human ❤️</div>
+
+            <div class="s3-left">
+                <div class="s3-panel-title">Eidi Goal</div>
+                <div class="progress-bar-wrap">
+                    <div class="progress-bar-fill goal-fill" id="goal-progress-fill"></div>
+                </div>
+                <div class="progress-pct" id="goal-percent-text">0%</div>
+                <div class="goal-text">Goal: PS5 leke FIFA khelunga! 🎮</div>
+                <div class="ps5-box">
+                    <img src="GIVEN_ASSESTS/ps5_real.png" class="ps5-img" alt="PS5 Console">
+                </div>
+            </div>
+
+            <div class="s3-center">
+                <div class="s3-progress-box">
+                    <div class="s3-prog-title">Eidi Collection Progress</div>
+                    <div class="s3-prog-bar-wrap">
+                        <div class="s3-prog-fill main-fill" id="main-progress-fill"></div>
+                    </div>
+                    <div class="s3-prog-nums" id="amount-text">₹0 / ₹49,990</div>
+                    <div class="s3-prog-msg">Thoda aur pyaar dikhao, PS5 humara intezaar kar raha hai! 😎</div>
+                </div>
+
+                <div class="qr-label">📷 Scan &amp; Send Eidi</div>
+                <div class="qr-wrap">
+                    <div class="qr-glow-track"></div>
+                    <div class="qr-inner" id="qrInner">
+                        <img src="GIVEN_ASSESTS/qr_code.png" id="qrCanvas" style="width:100%;height:100%;border-radius:10px;display:block;" alt="UPI QR Code">
+                    </div>
+                </div>
+                <div class="qr-upi">UPI ID: aryansk282@okicici ❤️</div>
+
+                <div class="share-row">
+                    <div class="share-icon" style="background:#25D366" title="WhatsApp">💬</div>
+                    <div class="share-icon" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)" title="Instagram">📷</div>
+                    <div class="share-icon" style="background:#FFFC00;color:#000" title="Snapchat">👻</div>
+                    <div class="share-icon" style="background:#0088CC" title="Telegram">✈️</div>
+                    <div class="share-icon" style="background:#555" title="Share">↗️</div>
+                </div>
+            </div>
+
+            <div class="s3-right">
+                <div class="s3-stats-box">
+                    <div class="stats-label">Total Eidi Received</div>
+                    <div class="stats-amount" id="total-received-text">₹0</div>
+                    <div class="stats-txn">33 Transactions 🎉</div>
+                </div>
+                <div class="s3-dua-box">
+                    <strong>🤲 My Dua For You</strong>
+                    May Allah multiply your wealth and happiness, so you can give me more eidi 🙌
+                </div>
+                <div class="s3-dua-accepted-box" id="dua-accepted-box">
+                    <strong>🙏 Dua Accepted!</strong>
+                    Dua accepted... but the QR is still available, just saying! 😉💸
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
