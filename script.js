@@ -23,6 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
         showSlide(currentSlide);
     });
 
+    const sendEidiBtn = document.querySelector('.send-eidi-btn');
+    if (sendEidiBtn) {
+        sendEidiBtn.addEventListener('click', () => {
+            currentSlide = 2; // Section 3
+            showSlide(currentSlide);
+        });
+    }
+
     // --- Audio Logic ---
     const bgMusic = document.getElementById("bg-music");
     const soundBtn = document.getElementById("sound-btn");
@@ -40,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Dynamic Progress Bar (Section 3) ---
     const TOTAL_EIDI_GOAL = 49990;
-    let currentEidiCollected = 17450; 
+    let currentEidiCollected = 4670; 
     const goalFill = document.getElementById("goal-progress-fill");
     const mainFill = document.getElementById("main-progress-fill");
     const goalPercentText = document.getElementById("goal-percent-text");
