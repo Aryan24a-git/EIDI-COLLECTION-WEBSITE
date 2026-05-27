@@ -163,7 +163,15 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener('click', () => {
             const type = btn.getAttribute('data-type');
             const emoji = btn.querySelector('.emoji').textContent;
-            let msgs = Object.prototype.hasOwnProperty.call(toastMessages, type) ? toastMessages[type] : toastMessages.default;
+            let msgs;
+            switch (type) {
+                case 'cute': msgs = toastMessages.cute; break;
+                case 'qr': msgs = toastMessages.qr; break;
+                case 'goat': msgs = toastMessages.goat; break;
+                case 'masha': msgs = toastMessages.masha; break;
+                case 'broke': msgs = toastMessages.broke; break;
+                default: msgs = toastMessages.default; break;
+            }
             const msg = msgs[Math.floor(Math.random() * msgs.length)];
             showToast(emoji + ' ' + msg);
 
@@ -177,13 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.option-card').forEach(card => {
         card.addEventListener('click', () => {
             const type = card.getAttribute('data-type');
-            const msgs = {
-                eidi: '💸 Jazakallah! May Allah bless you! Go to Next Slide for QR! 🎉',
-                broke: '😭 Even ₹10 builds character habibi! But the QR is still there... 👀',
-                negotiate: '🤝 Discount not available! But installments accepted 😂',
-                dua: '🙏 Dua accepted! Check Section 3 below My Dua! ❤️'
-            };
-            showToast(Object.prototype.hasOwnProperty.call(msgs, type) ? msgs[type] : '❤️ Eid Mubarak!');
+            let msgText;
+            switch (type) {
+                case 'eidi': msgText = '💸 Jazakallah! May Allah bless you! Go to Next Slide for QR! 🎉'; break;
+                case 'broke': msgText = '😭 Even ₹10 builds character habibi! But the QR is still there... 👀'; break;
+                case 'negotiate': msgText = '🤝 Discount not available! But installments accepted 😂'; break;
+                case 'dua': msgText = '🙏 Dua accepted! Check Section 3 below My Dua! ❤️'; break;
+                default: msgText = '❤️ Eid Mubarak!'; break;
+            }
+            showToast(msgText);
 
             if (type === 'dua') {
                 const box = document.getElementById('dua-accepted-box');
