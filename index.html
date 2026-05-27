@@ -9,9 +9,22 @@
 </head>
 <body>
 
-<audio id="bg-music" loop autoplay>
+<audio id="bg-music" loop>
     <source src="GIVEN_ASSESTS/BACK%20GROUND%20MUSIC.mp3" type="audio/mpeg">
 </audio>
+
+<!-- Music Suggestion Consent Modal -->
+<div id="music-modal" class="music-modal">
+    <div class="music-modal-content">
+        <div class="music-modal-icon">🎵</div>
+        <h2>Festive Music?</h2>
+        <p>Would you like to turn on the background music to enjoy the full Eid vibes? 🐑✨</p>
+        <div class="music-modal-buttons">
+            <button id="music-yes-btn" class="modal-btn yes-btn">✨ Play Music</button>
+            <button id="music-no-btn" class="modal-btn no-btn">Keep Silent</button>
+        </div>
+    </div>
+</div>
 
 <canvas id="starCanvas"></canvas>
 
@@ -56,7 +69,7 @@
         </svg>
 
         <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-        <button class="sound-btn" id="sound-btn">🔇 Turn Off Sound</button>
+        <button class="sound-btn" id="sound-btn">🔊 Turn On Sound</button>
 
         <div class="speech-bubble">عید مبارک<br>یا چلو ❤️</div>
 

@@ -31,49 +31,57 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Audio Logic ---
+    // --- Audio Logic & Modal Consent ---
     const bgMusic = document.getElementById("bg-music");
     const soundBtn = document.getElementById("sound-btn");
+    const musicModal = document.getElementById("music-modal");
+    const musicYesBtn = document.getElementById("music-yes-btn");
+    const musicNoBtn = document.getElementById("music-no-btn");
     let isPlaying = false;
 
-    function playAudio() {
-        bgMusic.play().then(() => {
-            isPlaying = true;
-            soundBtn.innerHTML = '🔇 Turn Off Sound';
-        }).catch(err => {
-            console.log("Autoplay blocked. Waiting for user interaction...");
-            isPlaying = false;
-            soundBtn.innerHTML = '🔊 Turn On Sound';
+    // Helper to close modal
+    function closeModal() {
+        if (musicModal) {
+            musicModal.classList.add("fade-out");
+            setTimeout(() => {
+                musicModal.style.display = "none";
+            }, 500);
+        }
+    }
+
+    // Modal YES Button (Play Music)
+    if (musicYesBtn) {
+        musicYesBtn.addEventListener("click", () => {
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                soundBtn.innerHTML = '🔇 Turn Off Sound';
+            }).catch(err => {
+                console.log("Audio play blocked even after user gesture: ", err);
+            });
+            closeModal();
         });
     }
 
-    // Try autoplay immediately
-    playAudio();
+    // Modal NO Button (Keep Silent)
+    if (musicNoBtn) {
+        musicNoBtn.addEventListener("click", () => {
+            isPlaying = false;
+            soundBtn.innerHTML = '🔊 Turn On Sound';
+            closeModal();
+        });
+    }
 
-    // Fallback: Try to play on first user interaction if not already playing
-    const startAudioOnInteraction = () => {
-        if (!isPlaying) {
-            playAudio();
-            document.removeEventListener('click', startAudioOnInteraction);
-            document.removeEventListener('touchstart', startAudioOnInteraction);
-        }
-    };
-    document.addEventListener('click', startAudioOnInteraction);
-    document.addEventListener('touchstart', startAudioOnInteraction);
-
-    soundBtn.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevent triggering the page-wide click listener
+    soundBtn.addEventListener("click", () => {
         if (isPlaying) {
             bgMusic.pause();
             soundBtn.innerHTML = '🔊 Turn On Sound';
             isPlaying = false;
-            // Also clean up interaction listeners if they haven't fired yet
-            document.removeEventListener('click', startAudioOnInteraction);
-            document.removeEventListener('touchstart', startAudioOnInteraction);
         } else {
             bgMusic.play().then(() => {
                 isPlaying = true;
                 soundBtn.innerHTML = '🔇 Turn Off Sound';
+            }).catch(err => {
+                console.log("Playback failed: ", err);
             });
         }
     });
